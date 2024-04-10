@@ -9,16 +9,16 @@ export const TiqsScreen = ({ route }) => {
   const { userLogged } = route.params;
   const [tiqs, setTiqs] = useState([]);
 
+  useEffect(() => {
+    searchTiqs();
+  }, []);
+
   const searchTiqs = () => {
     const allTiqs = database.tiqs;
     const tiqsFound = allTiqs.filter(tiq => tiq.asignado === userLogged.id);
     setTiqs(tiqsFound);
     console.log(tiqsFound);
   }
-
-  useEffect(() => {
-    searchTiqs();
-  }, []);
 
   return (
     <View>
