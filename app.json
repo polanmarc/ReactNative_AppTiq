@@ -1,4 +1,7 @@
 {
   "name": "appTiq",
-  "displayName": "appTiq"
+  "displayName": "appTiq",
+  "plugins": [
+    "expo-font"
+  ]
 }
