@@ -31,25 +31,37 @@ export const Tiq = ({ tiqSelected }: Props) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.headerContainer}>
-                <Text style={[styles.label, styles.itemContianer]}>ID: {tiqSelected.id}</Text>
-                <Text style={[styles.label, styles.itemContianer]}>Creador: {tiqSelected.creador}</Text>
-                <Text style={[styles.label, styles.itemContianer]}>Asignado: {tiqSelected.asignado}</Text>
-            </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <View style={{ flex: 1, height: 1, backgroundColor: colors.colorTheme, marginVertical: 20 }} />
-                <View>
-                    <Text style={[styles.label, { color: colorTitle }]}>  {tiqSelected.descripcion}  </Text>
-                </View>
-                <View style={{ flex: 1, height: 1, backgroundColor: colors.colorTheme }} />
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={[styles.labelTitle, { color: colorTitle }]}> {tiqSelected.descripcion} </Text>
             </View>
             <Text style={styles.label}> {tiqSelected.observaciones}</Text>
-            <PrimaryButton
-                onPress={handleTiqPress}
-                label="Abrir Tiq" />
+            <View>
+                <PrimaryButton
+                    onPress={handleTiqPress}
+                    label="Abrir Tiq" />
+            </View>
         </View>
     );
 }
+
+/*
+
+// === Warning Color linea 44: color: colorTitle ===
+
+<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, height: 1, backgroundColor: colors.colorTheme, marginVertical: 20 }} />
+    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 2 }}>
+        <Text style={[styles.labelTitle, { color: colorTitle }]}>{tiqSelected.descripcion}</Text>
+    </View>
+    <View style={{ flex: 1, height: 1, backgroundColor: colors.colorTheme }} />
+</View>
+
+<View style={styles.headerContainer}>
+    <Text style={[styles.label, styles.itemContianer]}>ID: {tiqSelected.id}</Text>
+    <Text style={[styles.label, styles.itemContianer]}>Creador: {tiqSelected.creador}</Text>
+</View>
+
+*/
 
 const styles = StyleSheet.create({
     container: {
@@ -68,12 +80,13 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         width: '32%'
     },
+    labelTitle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 5,
+    },
     label: {
         fontSize: 16,
         marginBottom: 5,
-    },
-    pressableText: {
-        color: '#fff',
-        fontSize: 16,
     },
 });

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Text, View, TextInput, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import database from '../../database/database.json';
+import users from '../../database/users.json';
 import { PrimaryButton } from "../components/PrimaryButton";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { globalStyles } from "../../config/themes/appThemes";
@@ -13,7 +13,7 @@ export const LoginScreen = () => {
     const navigation = useNavigation();
 
     const handleSudmit = () => {
-        const user = database.users.find(user => user.email === email);
+        const user = users.find(user => user.email === email);
         const newErrors = {};
         
         if (!email) {
@@ -31,12 +31,12 @@ export const LoginScreen = () => {
         } else {
             newErrors.email = "No se encontró ningún usuario con este correo electrónico.";
         }
-        
-        setErrors(newErrors);
     
         if (Object.keys(newErrors).length === 0) {
             console.log("Usuario encontrado");
             navigation.navigate("Tiqs", { userLogged: user });
+        } else {
+            setErrors(newErrors);
         }
     }
     
@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
     },
     row: {
         display: 'flex',

@@ -16,7 +16,13 @@ export const globalStyles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 60,
         paddingBottom: 15,
-    }
+    }, 
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 20,
+    },
 });
 
 /*

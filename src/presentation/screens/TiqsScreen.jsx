@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Text, View } from "react-native";
-import { Menu, Divider, Button } from 'react-native-paper';
-import database from '../../database/database.json';
+// import { Menu, Divider, Button } from 'react-native-paper';
+import tiqsDB from '../../database/tiqs.json';
 import { Tiq } from '../components/Tiq';
 import { globalStyles } from "../../config/themes/appThemes";
 
@@ -14,8 +14,7 @@ export const TiqsScreen = ({ route }) => {
   }, []);
 
   const searchTiqs = () => {
-    const allTiqs = database.tiqs;
-    const tiqsFound = allTiqs.filter(tiq => tiq.asignado === userLogged.id);
+    const tiqsFound = tiqsDB.filter(tiq => tiq.asignado === userLogged.id);
     setTiqs(tiqsFound);
     console.log(tiqsFound);
   }
