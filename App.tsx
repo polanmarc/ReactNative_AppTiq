@@ -6,6 +6,8 @@ import { TiqScreen } from './src/presentation/screens/TiqScreen';
 import { ThemeContextProvider } from './src/presentation/context/ThemeContext';
 import { PaperProvider } from 'react-native-paper';
 import { Header } from './src/presentation/components/Header';
+import { Prueba } from './src/presentation/screens/Prueba';
+import WelcomeScreen from './src/presentation/screens/WelcomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +16,10 @@ export const App = () => {
     <PaperProvider>
       <ThemeContextProvider>
         <Stack.Navigator>
+          <Stack.Screen 
+            name="Prueba" 
+            component={Prueba} 
+            options={{ headerShown: false }}/>
           <Stack.Screen 
             name="Login" 
             component={LoginScreen} 
