@@ -30,7 +30,7 @@ export const Tiq = ({ tiqSelected }: Props) => {
     };
 
     return (
-        <View style={styles.container}>
+        <>
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <Text style={[styles.labelTitle, { color: colorTitle }]}> {tiqSelected.descripcion} </Text>
             </View>
@@ -40,28 +40,9 @@ export const Tiq = ({ tiqSelected }: Props) => {
                     onPress={handleTiqPress}
                     label="Abrir Tiq" />
             </View>
-        </View>
+        </>
     );
 }
-
-/*
-
-// === Warning Color linea 44: color: colorTitle ===
-
-<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-    <View style={{ flex: 1, height: 1, backgroundColor: colors.colorTheme, marginVertical: 20 }} />
-    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 2 }}>
-        <Text style={[styles.labelTitle, { color: colorTitle }]}>{tiqSelected.descripcion}</Text>
-    </View>
-    <View style={{ flex: 1, height: 1, backgroundColor: colors.colorTheme }} />
-</View>
-
-<View style={styles.headerContainer}>
-    <Text style={[styles.label, styles.itemContianer]}>ID: {tiqSelected.id}</Text>
-    <Text style={[styles.label, styles.itemContianer]}>Creador: {tiqSelected.creador}</Text>
-</View>
-
-*/
 
 const styles = StyleSheet.create({
     container: {
@@ -90,3 +71,22 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
 });
+
+/*
+
+// === Warning Color linea 44: color: colorTitle ===
+
+<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, height: 1, backgroundColor: colors.colorTheme, marginVertical: 20 }} />
+    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 2 }}>
+        <Text style={[styles.labelTitle, { color: colorTitle }]}>{tiqSelected.descripcion}</Text>
+    </View>
+    <View style={{ flex: 1, height: 1, backgroundColor: colors.colorTheme }} />
+</View>
+
+<View style={styles.headerContainer}>
+    <Text style={[styles.label, styles.itemContianer]}>ID: {tiqSelected.id}</Text>
+    <Text style={[styles.label, styles.itemContianer]}>Creador: {tiqSelected.creador}</Text>
+</View>
+
+*/

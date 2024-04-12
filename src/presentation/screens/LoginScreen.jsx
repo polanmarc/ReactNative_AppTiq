@@ -59,6 +59,7 @@ export const LoginScreen = () => {
                     placeholder="Password"
                     value={password}
                     style={styles.input}
+                    secureTextEntry={true}
                     onChangeText={text => setPassword(text)}
                 />
                 {errors.password && <Text>{errors.password}</Text>}

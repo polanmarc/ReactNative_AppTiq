@@ -26,11 +26,11 @@ export const App = () => {
           <Stack.Screen
             name="Tiqs"
             component={TiqsScreen}
-            options={{ headerTitle: () => <Header /> }} />
+            options={{ headerTitle: () => <Header title="Tiqs" /> }} />
           <Stack.Screen
             name="Tiq"
             component={TiqScreen}
-            options={{ headerTitle: () => <Header /> }} />
+            options={{ headerTitle: () => <Header title="Tiq" /> }} />
         </Stack.Navigator>
       </ThemeContextProvider>
     </View>

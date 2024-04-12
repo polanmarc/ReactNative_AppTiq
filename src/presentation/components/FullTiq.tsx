@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from "react-native"
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { globalStyles } from "../../config/themes/appThemes";
-
 
 interface Props {
     tiqSelected: {
@@ -23,7 +23,6 @@ interface Props {
 }
 
 export const FullTiq = ({ tiqSelected }: Props) => {
-
     return (
         <View style={styles.container}>
             <Text style={styles.label}>ID: {tiqSelected.id}</Text>
@@ -42,16 +41,24 @@ export const FullTiq = ({ tiqSelected }: Props) => {
 
 const styles = StyleSheet.create({
     container: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 5,
-        padding: 10,
-        margin: 15,
-        marginBottom: 0,
+        backgroundColor: '#f9f9f9',
+        borderRadius: 10,
+        padding: 15,
+        marginHorizontal: 20,
+        marginTop: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     label: {
-        fontSize: 16,
-        marginBottom: 5,
-        fontFamily: 'Cochin',
+        fontSize: 18,
+        marginBottom: 10,
+        fontFamily: 'Arial',
+        color: '#333',
     },
 });

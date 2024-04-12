@@ -23,7 +23,7 @@ export const TiqsScreen = ({ route }) => {
     <View>
       <Text style={globalStyles.title}>Tiquets de {userLogged.name}</Text>
       {tiqs && tiqs.length > 0 && tiqs.map((tiq, index) => (
-        <View key={index}>
+        <View style={globalStyles.card} key={index}>
           <Tiq tiqSelected={tiq} />
         </View>
       ))}

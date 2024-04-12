@@ -23,6 +23,23 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
     },
+    card: {
+        // borderWidth: 0.5,
+        // borderColor: colors.sintelec,
+        backgroundColor: '#f0f0f0',
+        borderRadius: 10,
+        padding: 15,
+        marginHorizontal: 20,
+        marginTop: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
 });
 
 /*

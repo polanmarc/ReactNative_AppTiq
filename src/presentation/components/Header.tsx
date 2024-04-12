@@ -1,17 +1,20 @@
 import { Image, StyleSheet, Text, View } from "react-native"
 import { colors } from "../../config/themes/appThemes";
 
+interface Props {
+    title: string
+}
 
-export const Header = () => {
+export const Header = ({ title } : Props) => {
 
     const HeaderLogo = () => {
         return (
-            <View style={ syles.container }>
+            <View style={ styles.container }>
                 <Image
-                    style={{ width: 30, height: 30 }}
+                    style={ styles.icon }
                     source={require('../../config/img/icono-sin-fondo.png')}
                 />
-                <Text style={{ color: 'white', padding: 5, fontSize: 22 }}>Home</Text>
+                <Text style={ styles.title }>{title}</Text>
             </View>
         );
     }
@@ -23,14 +26,21 @@ export const Header = () => {
     )
 }
 
-const syles = StyleSheet.create({
+const styles = StyleSheet.create({
+    icon: { 
+        width: 30, 
+        height: 30 
+    },
     container: { 
         flex: 1, 
         flexDirection: 'row', 
         flexWrap: 'wrap', 
-        alignItems: 'center' 
+        alignItems: 'center', 
     }, 
     title: {
+        padding: 5,
+        paddingLeft: 10, 
+        fontSize: 22,
         color: colors.colorTheme
     }
 })
