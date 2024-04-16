@@ -1,12 +1,17 @@
-import { StyleSheet, useColorScheme } from "react-native"
+import { Platform, StyleSheet, useColorScheme } from "react-native"
 
-const colorScheme = useColorScheme();
+export const useSchema = () => {
+    const colorScheme = useColorScheme();
+    return colorScheme;
+}
 
 export const colors = {
     sintelec: '#008b8b',
     dark: '#3d3d3d',
     white: '#f5f5f5',
-    colorTheme: colorScheme === 'dark' ? '#f5f5f5' : '#3d3d3d',
+    redError: '#ff0000',
+    colorTheme: useSchema() === 'dark' ? '#f5f5f5' : '#3d3d3d',
+    colorThemeInvers: useSchema() === 'dark' ? '#3d3d3d' : '#f5f5f5',
 }
 
 export const globalStyles = StyleSheet.create({
@@ -16,7 +21,7 @@ export const globalStyles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 60,
         paddingBottom: 15,
-    }, 
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -24,8 +29,6 @@ export const globalStyles = StyleSheet.create({
         padding: 20,
     },
     card: {
-        // borderWidth: 0.5,
-        // borderColor: colors.sintelec,
         backgroundColor: '#f1f1f1',
         borderRadius: 10,
         padding: 15,
@@ -40,6 +43,28 @@ export const globalStyles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
     },
+    backgroundImg: {
+        flex: 1,
+        zIndex: 1,
+        justifyContent: 'center',
+    },
+    backgroundImgOpacity: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: useSchema() === 'dark' ? 'rgba(0,0,0,0.4)' : 'transparent',
+    },
+    errorContainer: {
+        flex: 1,
+        alignItems: 'center'
+    },
+    error: {
+        color: colors.redError
+    },
+    fixLeftDownButton: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: Platform.OS === 'android' ? 15 : 0,
+    }
 });
 
 /*

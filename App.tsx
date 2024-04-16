@@ -7,6 +7,7 @@ import { ThemeContextProvider } from './src/presentation/context/ThemeContext';
 import { Header } from './src/presentation/components/Header';
 import { HomeScreen } from './src/presentation/screens/HomeScreen';
 import { View } from 'react-native';
+import HamburguerMenu from './src/presentation/shared/HamburguerMenu';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,11 +27,11 @@ export const App = () => {
           <Stack.Screen
             name="Tiqs"
             component={TiqsScreen}
-            options={{ headerTitle: () => <Header title="Tiqs" /> }} />
+            options={{ header: () => <Header title={"Tiqs"} /> }} />
           <Stack.Screen
             name="Tiq"
             component={TiqScreen}
-            options={{ headerTitle: () => <Header title="Tiq" /> }} />
+            options={{ header: () => <Header title={"Tiq"} /> }} />
         </Stack.Navigator>
       </ThemeContextProvider>
     </View>

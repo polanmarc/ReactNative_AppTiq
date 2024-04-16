@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Text, View } from "react-native";
-// import { Menu, Divider, Button } from 'react-native-paper';
+import { Text, View, ImageBackground, ScrollView } from "react-native";
 import tiqsDB from '../../database/tiqs.json';
 import { Tiq } from '../components/Tiq';
 import { globalStyles } from "../../config/themes/appThemes";
+import { getRouteBackground } from '../hooks/Functions';
+import HamburguerMenu from "../shared/HamburguerMenu";
 
 export const TiqsScreen = ({ route }) => {
   const { userLogged } = route.params;
@@ -20,13 +21,17 @@ export const TiqsScreen = ({ route }) => {
   }
 
   return (
-    <View>
-      <Text style={globalStyles.title}>Tiquets de {userLogged.name}</Text>
-      {tiqs && tiqs.length > 0 && tiqs.map((tiq, index) => (
-        <View style={globalStyles.card} key={index}>
-          <Tiq tiqSelected={tiq} />
+    <ImageBackground source={getRouteBackground()} style={globalStyles.backgroundImg} resizeMode="cover" >
+      <ScrollView >
+        <View style={{ marginBottom: 20 }}>
+          <Text style={globalStyles.title}>Tiquets de {userLogged.name}</Text>
+          {tiqs && tiqs.length > 0 && tiqs.map((tiq, index) => (
+            <View style={globalStyles.card} key={index}>
+              <Tiq tiqSelected={tiq} />
+            </View>
+          ))}
         </View>
-      ))}
-    </View>
+      </ScrollView>
+    </ImageBackground>
   );
 }

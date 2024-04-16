@@ -1,3 +1,4 @@
+import { useColorScheme } from "react-native"
 
 interface getPriorityProps {
     num : number
@@ -13,6 +14,12 @@ export const getPriority = ({ num } : getPriorityProps) => {
     } else {
         return "Recordatorio"
     }
+}
+
+export const getRouteBackground = () => {
+    const colorScheme = useColorScheme();
+    const imgRute = colorScheme === 'dark' ? require('../../config/img/fondo-claro.png') : require('../../config/img/fondo-oscuro-fullscreen.png');
+    return imgRute;
 }
 
 export const getColorPriority = (num : number) => {

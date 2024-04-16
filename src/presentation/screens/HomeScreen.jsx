@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, ImageBackground } from 'react-native'
-import { PrimaryButton } from '../components/PrimaryButton'
+import { PrimaryButton } from '../shared/PrimaryButton'
 import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from 'react-native';
 import { colors, globalStyles } from '../../config/themes/appThemes';
@@ -15,7 +15,8 @@ export const HomeScreen = () => {
     }
 
     return (
-        <ImageBackground source={imgRute} style={styles.image} resizeMode="cover" >
+        <ImageBackground source={imgRute} style={globalStyles.backgroundImg} resizeMode="cover" >
+            <View style={globalStyles.backgroundImgOpacity} />
             <View style={globalStyles.container}>
                 <Text style={globalStyles.title}>SINTELEC</Text>
                 <PrimaryButton
@@ -25,10 +26,3 @@ export const HomeScreen = () => {
         </ImageBackground>
     )
 }
-
-const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        justifyContent: 'center',
-    },
-})

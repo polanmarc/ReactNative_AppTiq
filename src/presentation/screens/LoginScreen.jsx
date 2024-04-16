@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Text, View, TextInput, StyleSheet } from "react-native";
+import { Text, View, TextInput, StyleSheet, ImageBackground } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import users from '../../database/users.json';
-import { PrimaryButton } from "../components/PrimaryButton";
+import { PrimaryButton } from "../shared/PrimaryButton";
 import Icon from 'react-native-vector-icons/Ionicons';
-import { globalStyles } from "../../config/themes/appThemes";
+import { colors, globalStyles } from "../../config/themes/appThemes";
+import { getRouteBackground } from '../hooks/Functions';
 
 export const LoginScreen = () => {
     const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ export const LoginScreen = () => {
     const handleSudmit = () => {
         const user = users.find(user => user.email === email);
         const newErrors = {};
-        
+
         if (!email) {
             newErrors.email = "Por favor, introduce tu dirección de correo electrónico.";
         }
@@ -31,7 +32,7 @@ export const LoginScreen = () => {
         } else {
             newErrors.email = "No se encontró ningún usuario con este correo electrónico.";
         }
-    
+
         if (Object.keys(newErrors).length === 0) {
             console.log("Usuario encontrado");
             navigation.navigate("Tiqs", { userLogged: user });
@@ -39,36 +40,46 @@ export const LoginScreen = () => {
             setErrors(newErrors);
         }
     }
-    
+
     return (
-        <View style={styles.container}>
-            <Text style={globalStyles.title}>Login</Text>
-            <View style={styles.row}>
-                <Icon style={styles.icono} name="mail-outline" size={ 35 } />
-                <TextInput
-                    placeholder="Email"
-                    value={email}
-                    style={styles.input}
-                    onChangeText={text => setEmail(text)}
-                />
-                {errors.email && <Text>{errors.email}</Text>}
+        <ImageBackground source={getRouteBackground()} style={globalStyles.backgroundImg} resizeMode="cover" >
+            <View style={globalStyles.backgroundImgOpacity} />
+            <View style={styles.container}>
+                <Text style={globalStyles.title}>Login</Text>
+                <View style={styles.row}>
+                    <Icon style={styles.icono} name="mail-outline" size={35} />
+                    <TextInput
+                        placeholder="Email"
+                        value={email}
+                        style={styles.input}
+                        onChangeText={text => setEmail(text)}
+                    />
+                </View>
+                {errors.email &&
+                    <View style={styles.errorContainer}>
+                        <Text style={globalStyles.error}>{errors.email}</Text>
+                    </View>}
+                <View style={styles.row}>
+                    <Icon style={styles.icono} name="key-outline" size={35}></Icon>
+                    <TextInput
+                        placeholder="Password"
+                        value={password}
+                        style={styles.input}
+                        secureTextEntry={true}
+                        onChangeText={text => setPassword(text)}
+                    />
+                </View>
+                {errors.password &&
+                    <View style={styles.errorContainer}>
+                        <Text style={globalStyles.error}>{errors.password}</Text>
+                    </View>}
+
+                <PrimaryButton
+                    onPress={handleSudmit}
+                    label="Enviar" />
             </View>
-            <View style={styles.row}>
-                <Icon style={styles.icono} name="key-outline" size={ 35 }></Icon>
-                <TextInput
-                    placeholder="Password"
-                    value={password}
-                    style={styles.input}
-                    secureTextEntry={true}
-                    onChangeText={text => setPassword(text)}
-                />
-                {errors.password && <Text>{errors.password}</Text>}
-            </View>
-            <PrimaryButton 
-              onPress={handleSudmit}
-              label="Enviar"/>
-        </View>
-    );    
+        </ImageBackground>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -87,7 +98,7 @@ const styles = StyleSheet.create({
     },
     icono: {
         marginRight: 10
-    },  
+    },
     input: {
         height: 40,
         width: '90%',
@@ -96,5 +107,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginBottom: 10,
         paddingLeft: 10,
-    },
+        color: colors.colorTheme
+    }
 });

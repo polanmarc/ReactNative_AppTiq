@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text, View, StyleSheet } from "react-native";
 import { colors, globalStyles } from "../../config/themes/appThemes";
-import { PrimaryButton } from "./PrimaryButton";
+import { PrimaryButton } from "../shared/PrimaryButton";
 import { getColorPriority } from "../hooks/Functions";
 
 
@@ -32,10 +32,10 @@ export const Tiq = ({ tiqSelected }: Props) => {
     return (
         <>
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={[styles.labelTitle, { color: colorTitle }]}> {tiqSelected.descripcion} </Text>
+                <Text style={[styles.labelTitle, colorTitle && { color: colorTitle }]}> {tiqSelected.descripcion} </Text>
             </View>
             <Text style={styles.label}> {tiqSelected.observaciones}</Text>
-            <View>
+            <View style={styles.containerOpenTiq}>
                 <PrimaryButton
                     onPress={handleTiqPress}
                     label="Abrir Tiq" />
@@ -45,21 +45,10 @@ export const Tiq = ({ tiqSelected }: Props) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        borderWidth: 1,
-        borderColor: colors.sintelec,
-        borderRadius: 5,
-        padding: 10,
-        margin: 15,
-        marginBottom: 0,
-    },
-    headerContainer: {
-        flexDirection: 'row',
-        width: '100%',
-    },
-    itemContianer: {
+    containerOpenTiq: {
+        justifyContent: 'center',
+        alignContent: 'center',
         textAlign: 'center',
-        width: '32%'
     },
     labelTitle: {
         fontSize: 20,
@@ -69,6 +58,7 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 16,
         marginBottom: 5,
+        color: colors.dark
     },
 });
 
