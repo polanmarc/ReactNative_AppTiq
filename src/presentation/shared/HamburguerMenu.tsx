@@ -2,13 +2,21 @@ import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Menu, Divider, Provider as PaperProvider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { changeColorSchema } from '../../config/themes/appThemes';
 
 const HamburguerMenu = () => {
     const [visible, setVisible] = useState(false);
+    const [colorScheme, setColorScheme] = useState('light'); // Estado para almacenar el esquema de color actual
 
     const openMenu = () => setVisible(true);
-
     const closeMenu = () => setVisible(false);
+
+    // Función para cambiar el esquema de color
+    const toggleColorSchema = () => {
+        const newColorScheme = colorScheme === 'light' ? 'dark' : 'light'; // Cambia entre light y dark
+        changeColorSchema({ color: newColorScheme }); // Cambia el esquema de color
+        setColorScheme(newColorScheme); // Actualiza el estado del esquema de color
+    };
 
     return (
         <PaperProvider>
@@ -21,7 +29,8 @@ const HamburguerMenu = () => {
                     style={styles.menu}
                     statusBarHeight={25}
                 >
-                    <Menu.Item onPress={() => { }} title="Item 1" />
+                    {/* Pasa la función toggleColorSchema como onPress para el Item 1 */}
+                    <Menu.Item onPress={toggleColorSchema} title="Item 1" />
                     <Menu.Item onPress={() => { }} title="Item 2" />
                     <Divider />
                     <Menu.Item onPress={() => { }} title="Item 3" />

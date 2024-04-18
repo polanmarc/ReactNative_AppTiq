@@ -1,10 +1,11 @@
 import { useColorScheme } from "react-native"
+import { colors } from "../../config/themes/appThemes"
 
 interface getPriorityProps {
-    num : number
+    num: number
 }
 
-export const getPriority = ({ num } : getPriorityProps) => {
+export const getPriority = ({ num }: getPriorityProps) => {
     if (num === 1) {
         return "Alta"
     } else if (num === 2) {
@@ -22,7 +23,7 @@ export const getRouteBackground = () => {
     return imgRute;
 }
 
-export const getColorPriority = (num : number) => {
+export const getColorPriority = (num: number | null) => {
     if (num === 1) {
         return "#ff0000";
     } else if (num === 2) {
@@ -30,6 +31,6 @@ export const getColorPriority = (num : number) => {
     } else if (num === 3) {
         return "#0ae600";
     } else {
-        return "#0064ff";
+        return colors.sintelec;
     }
 }

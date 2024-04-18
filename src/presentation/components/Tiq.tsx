@@ -3,10 +3,10 @@ import { useNavigation } from "@react-navigation/native";
 import { Text, View, StyleSheet } from "react-native";
 import { colors, globalStyles } from "../../config/themes/appThemes";
 import { PrimaryButton } from "../shared/PrimaryButton";
-import { getColorPriority } from "../hooks/Functions";
+import { getColorPriority, stripHTML } from "../hooks/Functions";
+import { PropsTiq } from "../../props/TiqProps"
 
-
-interface Props {
+/* interface Props {
     tiqSelected: {
         id: number;
         creador: number;
@@ -15,26 +15,29 @@ interface Props {
         observaciones: string;
         prioridad: number;
     };
-}
+} */
 
-export const Tiq = ({ tiqSelected }: Props) => {
+export const Tiq = ({ tiq }: PropsTiq ) => {
     const navigation = useNavigation();
-    const [colorTitle, setColorTitle] = useState('')
+    const [colorTitle, setColorTitle] = useState('');
 
     useEffect(() => {
-        setColorTitle(getColorPriority(tiqSelected.prioridad));
-    }, []);
+        if (tiq) {
+            setColorTitle(getColorPriority(tiq.estado));
+        }
+    }, [tiq]);
 
     const handleTiqPress = () => {
-        navigation.navigate("Tiq", { tiq: tiqSelected });
+        navigation.navigate("Tiq", { tiq: tiq });
     };
 
     return (
         <>
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={[styles.labelTitle, colorTitle && { color: colorTitle }]}> {tiqSelected.descripcion} </Text>
+                <View style={[styles.containerPriority, colorTitle && { backgroundColor: colorTitle }]}></View>
+                <Text style={styles.labelTitle}> {tiq.descripcion} </Text>
             </View>
-            <Text style={styles.label}> {tiqSelected.observaciones}</Text>
+            <Text style={styles.label}>{ tiq.observaciones.replace(/<[^>]*>/g, '') }</Text>
             <View style={styles.containerOpenTiq}>
                 <PrimaryButton
                     onPress={handleTiqPress}
@@ -44,6 +47,7 @@ export const Tiq = ({ tiqSelected }: Props) => {
     );
 }
 
+
 const styles = StyleSheet.create({
     containerOpenTiq: {
         justifyContent: 'center',
@@ -52,14 +56,20 @@ const styles = StyleSheet.create({
     },
     labelTitle: {
         fontSize: 20,
-        fontWeight: 'bold',
+        fontWeight: '800',
         marginBottom: 5,
+        color: colors.dark
     },
     label: {
         fontSize: 16,
         marginBottom: 5,
         color: colors.dark
     },
+    containerPriority: {
+        width: 30,
+        height: 30,
+        borderRadius: 5
+    }
 });
 
 /*

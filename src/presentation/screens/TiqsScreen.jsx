@@ -1,33 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Text, View, ImageBackground, ScrollView } from "react-native";
-import tiqsDB from '../../database/tiqs.json';
 import { Tiq } from '../components/Tiq';
 import { globalStyles } from "../../config/themes/appThemes";
 import { getRouteBackground } from '../hooks/Functions';
-import HamburguerMenu from "../shared/HamburguerMenu";
+import { GetTiqsForId } from '../../api/GetTiqs'
 
 export const TiqsScreen = ({ route }) => {
   const { userLogged } = route.params;
-  const [tiqs, setTiqs] = useState([]);
-
-  useEffect(() => {
-    searchTiqs();
-  }, []);
-
-  const searchTiqs = () => {
-    const tiqsFound = tiqsDB.filter(tiq => tiq.asignado === userLogged.id);
-    setTiqs(tiqsFound);
-    console.log(tiqsFound);
-  }
+  const tiqId = userLogged.id;
+  const ticketData = GetTiqsForId({ tiqId });
 
   return (
     <ImageBackground source={getRouteBackground()} style={globalStyles.backgroundImg} resizeMode="cover" >
-      <ScrollView >
+      <ScrollView>
         <View style={{ marginBottom: 20 }}>
           <Text style={globalStyles.title}>Tiquets de {userLogged.name}</Text>
-          {tiqs && tiqs.length > 0 && tiqs.map((tiq, index) => (
+          {ticketData && ticketData.map((tiq, index) => (
             <View style={globalStyles.card} key={index}>
-              <Tiq tiqSelected={tiq} />
+              <Tiq tiq={tiq} />
             </View>
           ))}
         </View>

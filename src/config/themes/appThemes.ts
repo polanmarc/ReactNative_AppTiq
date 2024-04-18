@@ -5,6 +5,15 @@ export const useSchema = () => {
     return colorScheme;
 }
 
+interface PropsChangeColorSchema {
+    color : 'light' | 'dark';
+}
+
+export const changeColorSchema = ({ color } : PropsChangeColorSchema) => {
+    const colorScheme = color;
+    return colorScheme;
+}
+
 export const colors = {
     sintelec: '#008b8b',
     dark: '#3d3d3d',

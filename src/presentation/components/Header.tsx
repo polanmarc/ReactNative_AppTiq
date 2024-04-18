@@ -3,12 +3,20 @@ import * as React from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 import { colors } from "../../config/themes/appThemes";
 import HamburguerMenu from "../shared/HamburguerMenu";
+import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props {
     title: string
 }
 
 export const Header = ({ title }: Props) => {
+    const navigation = useNavigation();
+
+    const goBack = () => {
+        navigation.goBack();
+    };
+
     const HeaderLogo = () => {
         return (
             <View style={styles.container}>
@@ -23,6 +31,7 @@ export const Header = ({ title }: Props) => {
 
     return (
         <View style={styles.headerContainer}>
+            <Icon style={styles.goBack} size={30} onPress={goBack} name="arrow-back-outline" />
             <HeaderLogo />
             <HamburguerMenu />
         </View>
@@ -39,6 +48,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'center',
+    },
+    goBack: {
+        marginRight: 20
     },
     title: {
         padding: 5,
