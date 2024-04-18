@@ -3,7 +3,7 @@ import { Text, View, ImageBackground, ScrollView } from "react-native";
 import { Tiq } from '../components/Tiq';
 import { globalStyles } from "../../config/themes/appThemes";
 import { getRouteBackground } from '../hooks/Functions';
-import { GetTiqsForId } from '../../api/GetTiqs'
+import { GetTiqsForId } from '../hooks/GetTiqs'
 
 export const TiqsScreen = ({ route }) => {
   const { userLogged } = route.params;

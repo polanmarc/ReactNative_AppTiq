@@ -84,7 +84,7 @@ export const FullTiq = ({ tiqSelected }: Props) => {
                     <Text style={styles.titleSection}>Titulo Tiq: </Text>
                     <Text style={styles.label}>{tiqSelected.descripcion}</Text>
                     <Text style={styles.titleSection}>Observacion: </Text>
-                    <Text style={styles.label}>{tiqSelected.observaciones.replace(/<[^>]*>/g, '')}</Text>
+                    <Text style={styles.label}>{tiqSelected.observaciones.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, '\n\n')}</Text>
                 </View>
                 <Animated.View style={[styles.content, { maxHeight: height.interpolate({ inputRange: [0, 1], outputRange: [0, 500] }) }]}>
                     <Text style={styles.label}>Prioridad: {tiqSelected.prioridad}</Text>

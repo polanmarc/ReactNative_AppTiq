@@ -1,4 +1,7 @@
-import { Platform, StyleSheet, useColorScheme } from "react-native"
+import { Dimensions, Platform, StyleSheet, useColorScheme } from "react-native"
+
+export const windowWidth = Dimensions.get('window').width;
+export const windowHeight = Dimensions.get('window').height;
 
 export const useSchema = () => {
     const colorScheme = useColorScheme();
@@ -6,10 +9,10 @@ export const useSchema = () => {
 }
 
 interface PropsChangeColorSchema {
-    color : 'light' | 'dark';
+    color: 'light' | 'dark';
 }
 
-export const changeColorSchema = ({ color } : PropsChangeColorSchema) => {
+export const changeColorSchema = ({ color }: PropsChangeColorSchema) => {
     const colorScheme = color;
     return colorScheme;
 }

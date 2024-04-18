@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Text, View, StyleSheet } from "react-native";
-import { colors, globalStyles } from "../../config/themes/appThemes";
+import { Text, View, StyleSheet, Dimensions } from "react-native";
+import { colors, globalStyles, windowHeight, windowWidth } from "../../config/themes/appThemes";
 import { PrimaryButton } from "../shared/PrimaryButton";
-import { getColorPriority, stripHTML } from "../hooks/Functions";
+import { getColorPriority } from "../hooks/Functions";
 import { PropsTiq } from "../../props/TiqProps"
 
 /* interface Props {
@@ -32,30 +32,36 @@ export const Tiq = ({ tiq }: PropsTiq ) => {
     };
 
     return (
-        <>
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <View>
+            <View style={styles.containerHeaderTiq}>
                 <View style={[styles.containerPriority, colorTitle && { backgroundColor: colorTitle }]}></View>
-                <Text style={styles.labelTitle}> {tiq.descripcion} </Text>
+                <Text style={styles.labelTitle}>{tiq.descripcion}</Text>
             </View>
-            <Text style={styles.label}>{ tiq.observaciones.replace(/<[^>]*>/g, '') }</Text>
+            <Text style={styles.label}>{ tiq.observaciones.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, '\n\n') }</Text>
             <View style={styles.containerOpenTiq}>
                 <PrimaryButton
                     onPress={handleTiqPress}
                     label="Abrir Tiq" />
             </View>
-        </>
+        </View>
     );
 }
 
 
 const styles = StyleSheet.create({
+    containerHeaderTiq: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        maxWidth: windowWidth - 80
+    },
     containerOpenTiq: {
         justifyContent: 'center',
         alignContent: 'center',
         textAlign: 'center',
     },
     labelTitle: {
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: '800',
         marginBottom: 5,
         color: colors.dark
@@ -68,7 +74,10 @@ const styles = StyleSheet.create({
     containerPriority: {
         width: 30,
         height: 30,
-        borderRadius: 5
+        borderRadius: 5,
+        marginLeft: 30,
+        marginHorizontal: 10, 
+        marginVertical: 7
     }
 });
 
