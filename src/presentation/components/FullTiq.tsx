@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, Animated, View } from "react-native";
 import { colors, globalStyles } from "../../config/themes/appThemes";
-import { Avatar, Button, Card, FAB, IconButton } from "react-native-paper";
+import { Card, IconButton } from "react-native-paper";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { PrimaryButton } from '../shared/PrimaryButton';
+import { getPriority } from "../hooks/Functions";
+import Accion from "./Accion";
 
 interface Props {
     tiqSelected: {
@@ -22,6 +23,23 @@ interface Props {
         planificado2: any;
         created_at: string;
         updated_at: string;
+        acciones: [
+            {
+                id: number,
+                idtiq: number,
+                creador: number,
+                asignado: number,
+                descripcion: string,
+                observaciones: string,
+                tiempo: string,
+                created_at: string,
+                updated_at: string,
+                interna: number,
+                cliente: number,
+                facturable: number,
+                documentos: any[],
+            }
+        ];
     };
 }
 
@@ -54,9 +72,9 @@ export const FullTiq = ({ tiqSelected }: Props) => {
         <View>
             <Card style={styles.container}>
                 <Card.Title
-                    style={styles.header}
+                    style={globalStyles.header}
                     title={"Tiquet " + tiqSelected.id}
-                    titleStyle={styles.title}
+                    titleStyle={globalStyles.litleTitle}
                     right={(props) => (
                         <IconButton
                             {...props}
@@ -80,20 +98,24 @@ export const FullTiq = ({ tiqSelected }: Props) => {
                         />
                     )}
                 />
-                <View style={styles.content}>
-                    <Text style={styles.titleSection}>Titulo Tiq: </Text>
-                    <Text style={styles.label}>{tiqSelected.descripcion}</Text>
-                    <Text style={styles.titleSection}>Observacion: </Text>
-                    <Text style={styles.label}>{tiqSelected.observaciones.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, '\n\n')}</Text>
+                <View style={globalStyles.content}>
+                    <Text style={globalStyles.titleSection}>Titulo Tiq: </Text>
+                    <Text style={globalStyles.label}>{tiqSelected.descripcion}</Text>
+                    <Text style={globalStyles.titleSection}>Observacion: </Text>
+                    <Text style={globalStyles.label}>{tiqSelected.observaciones.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, '\n\n')}</Text>
                 </View>
-                <Animated.View style={[styles.content, { maxHeight: height.interpolate({ inputRange: [0, 1], outputRange: [0, 500] }) }]}>
-                    <Text style={styles.label}>Prioridad: {tiqSelected.prioridad}</Text>
-                    <Text style={styles.label}>Tipo: {tiqSelected.tipotiq}</Text>
-                    <Text style={styles.label}>Fecha inicio: {tiqSelected.created_at}</Text>
-                    <Text style={styles.label}>Fecha final: {tiqSelected.fecha_final}</Text>
-                    <Text style={styles.label}>Estado: {tiqSelected.estado}</Text>
+                <Animated.View style={[globalStyles.content, { maxHeight: height.interpolate({ inputRange: [0, 1], outputRange: [0, 500] }) }]}>
+                    <Text style={globalStyles.label}>Prioridad: {tiqSelected.prioridad === null ? "No asignada." : tiqSelected.prioridad}</Text>
+                    <Text style={globalStyles.label}>Tipo: {tiqSelected.tipotiq}</Text>
+                    <Text style={globalStyles.label}>Fecha inicio: {tiqSelected.created_at}</Text>
+                    <Text style={globalStyles.label}>Fecha final: {tiqSelected.fecha_final === null || tiqSelected.fecha_final === '' ? "No cerrada" : tiqSelected.prioridad}</Text>
+                    <Text style={globalStyles.label}>Estado: {getPriority(tiqSelected.estado)}</Text>
                 </Animated.View>
             </Card>
+            {tiqSelected.acciones && tiqSelected.acciones.length > 0 && tiqSelected.acciones.map((element) => (
+                <Accion accion={element} key={element.id} />
+            ))
+            }
         </View>
     );
 }
@@ -112,33 +134,5 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
-    },
-    header: {
-        backgroundColor: colors.sintelec,
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-    },
-    title: {
-        fontSize: 25,
-        marginTop: 20,
-        fontWeight: 'bold',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: colors.white
-    },
-    titleSection: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: colors.dark
-    },
-    content: {
-        overflow: 'hidden',
-        paddingHorizontal: 15,
-        paddingVertical: 10,
-    },
-    label: {
-        fontSize: 18,
-        marginBottom: 10,
-        color: colors.dark
     },
 });

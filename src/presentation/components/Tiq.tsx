@@ -43,6 +43,7 @@ export const Tiq = ({ tiq }: PropsTiq ) => {
                     onPress={handleTiqPress}
                     label="Abrir Tiq" />
             </View>
+            {}
         </View>
     );
 }

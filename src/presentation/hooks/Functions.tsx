@@ -1,11 +1,8 @@
 import { useColorScheme } from "react-native"
 import { colors } from "../../config/themes/appThemes"
 
-interface getPriorityProps {
-    num: number
-}
 
-export const getPriority = ({ num }: getPriorityProps) => {
+export const getPriority = (num: number) => {
     if (num === 1) {
         return "Alta"
     } else if (num === 2) {

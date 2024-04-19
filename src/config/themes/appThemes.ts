@@ -76,7 +76,35 @@ export const globalStyles = StyleSheet.create({
         margin: 16,
         right: 0,
         bottom: Platform.OS === 'android' ? 15 : 0,
-    }
+    }, 
+    label: {
+        fontSize: 18,
+        marginBottom: 10,
+        color: colors.dark
+    },
+    header: {
+        backgroundColor: colors.sintelec,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+    },
+    litleTitle: {
+        fontSize: 25,
+        marginTop: 20,
+        fontWeight: 'bold',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: colors.white
+    }, 
+    titleSection: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: colors.dark
+    },
+    content: {
+        overflow: 'hidden',
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+    },
 });
 
 /*
