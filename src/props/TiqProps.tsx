@@ -4,7 +4,7 @@ export interface PropsTiq {
         creador: number;
         asignado: number;
         inv_asignado: number | null;
-        prioridad: number | null; // Puedes definir un tipo específico para prioridad si lo conoces
+        prioridad: number | null;
         tipotiq: number;
         clasificacion: string;
         descripcion: string;
@@ -15,11 +15,11 @@ export interface PropsTiq {
         planificado2: string | null;
         created_at: string;
         updated_at: string;
-        desplazamiento: any; // Puedes definir un tipo específico si lo conoces
-        planificado_mysql: any; // Puedes definir un tipo específico si lo conoces
-        planificado_hora: any; // Puedes definir un tipo específico si lo conoces
-        prio: any; // Puedes definir un tipo específico si lo conoces
-        selects: any[]; // Puedes definir un tipo específico si lo conoces
+        desplazamiento: any; 
+        planificado_mysql: any; 
+        planificado_hora: any;
+        prio: any;
+        selects: any[];
         tipo: {
             id: number;
             user_id: number;
@@ -47,7 +47,7 @@ export interface PropsTiq {
                 }
             }[];
         };
-        acciones: any[]; // Puedes definir un tipo específico si lo conoces
+        acciones: any[];
         documentos: {
             id: number;
             idtiq: number;
@@ -72,7 +72,7 @@ export interface PropsTiq {
             avisosGenerales: number;
             created_at: string | null;
             updated_at: string;
-            cliente: any; // Puedes definir un tipo específico si lo conoces
+            cliente: any;
             observaciones: string | null;
             last_login: string;
             login_count: number;
@@ -89,7 +89,7 @@ export interface PropsTiq {
             avisosGenerales: number;
             created_at: string;
             updated_at: string;
-            cliente: any; // Puedes definir un tipo específico si lo conoces
+            cliente: any;
             observaciones: string | null;
             last_login: string;
             login_count: number;
@@ -105,6 +105,6 @@ export interface PropsTiq {
                 idetiqueta: number;
             };
         }[];
-        subetiquetas: any[]; // Puedes definir un tipo específico si lo conoces
+        subetiquetas: any[];
     }
 }
