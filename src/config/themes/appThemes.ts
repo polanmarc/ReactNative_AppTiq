@@ -72,7 +72,7 @@ export const globalStyles = StyleSheet.create({
     error: {
         color: colors.redError
     },
-    fixLeftDownButton: {
+    fixLeftDownButton: {  // posible implemntacion de boton para añadir acciones en TiqScreen
         position: 'absolute',
         margin: 16,
         right: 0,
