@@ -20,6 +20,7 @@ export const changeColorSchema = ({ color }: PropsChangeColorSchema) => {
 export const colors = {
     sintelec: '#008b8b',
     dark: '#3d3d3d',
+    grey: '#6c757d',
     white: '#f5f5f5',
     redError: '#ff0000',
     colorTheme: useSchema() === 'dark' ? '#f5f5f5' : '#3d3d3d',
@@ -84,6 +85,11 @@ export const globalStyles = StyleSheet.create({
     },
     header: {
         backgroundColor: colors.sintelec,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+    },
+    headerAcction: {
+        backgroundColor: colors.grey,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
     },

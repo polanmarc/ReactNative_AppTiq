@@ -7,7 +7,6 @@ import { ThemeContextProvider } from './src/presentation/context/ThemeContext';
 import { Header } from './src/presentation/components/Header';
 import { HomeScreen } from './src/presentation/screens/HomeScreen';
 import { View } from 'react-native';
-import HamburguerMenu from './src/presentation/shared/HamburguerMenu';
 
 const Stack = createNativeStackNavigator();
 

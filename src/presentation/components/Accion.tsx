@@ -33,7 +33,7 @@ const Accion = ({ accion }: AccionProps) => {
     return (
         <Card style={styles.container}>
             <Card.Title
-                style={globalStyles.header}
+                style={globalStyles.headerAcction}
                 title={"Accion " + accion.id}
                 titleStyle={styles.accionTitle}
                 right={(props) => (

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Menu, Divider, Provider as PaperProvider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { changeColorSchema } from '../../config/themes/appThemes';
+import { changeColorSchema, colors } from '../../config/themes/appThemes';
 
 const HamburguerMenu = () => {
     const [visible, setVisible] = useState(false);
@@ -24,7 +24,7 @@ const HamburguerMenu = () => {
                 <Menu
                     visible={visible}
                     onDismiss={closeMenu}
-                    anchor={<View><Icon size={35} onPress={openMenu} name="menu-outline" /></View>}
+                    anchor={<View><Icon size={35} color={colors.dark} onPress={openMenu} name="menu-outline" /></View>}
                     contentStyle={styles.menuContent}
                     style={styles.menu}
                     statusBarHeight={25}

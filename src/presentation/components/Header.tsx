@@ -31,7 +31,7 @@ export const Header = ({ title }: Props) => {
 
     return (
         <View style={styles.headerContainer}>
-            <Icon style={styles.goBack} size={30} onPress={goBack} name="arrow-back-outline" />
+            <Icon style={styles.goBack} size={30} color={colors.dark} onPress={goBack} name="arrow-back-outline" />
             <HeaderLogo />
             <HamburguerMenu />
         </View>
@@ -41,7 +41,7 @@ export const Header = ({ title }: Props) => {
 const styles = StyleSheet.create({
     icon: {
         width: 30,
-        height: 30
+        height: 30,
     },
     container: {
         flex: 1,
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         padding: 5,
         paddingLeft: 10,
         fontSize: 22,
-        color: colors.colorTheme
+        color: colors.dark
     },
     headerContainer: {
         margin: 15,

@@ -12,6 +12,7 @@ export const TiqsScreen = ({ route }) => {
 
   return (
     <ImageBackground source={getRouteBackground()} style={globalStyles.backgroundImg} resizeMode="cover" >
+      <View style={globalStyles.backgroundImgOpacity} />
       <ScrollView>
         <View style={{ marginBottom: 20 }}>
           <Text style={globalStyles.title}>Tiquets de {userLogged.name}</Text>
