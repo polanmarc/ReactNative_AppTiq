@@ -73,9 +73,9 @@ const styles = StyleSheet.create({
         color: colors.dark
     },
     containerPriority: {
-        width: 7,
-        height: 7,
-        borderRadius: 30,
+        width: 10,
+        height: 10,
+        borderRadius: 10,
         marginLeft: 30,
         marginHorizontal: 10, 
         marginVertical: 7
