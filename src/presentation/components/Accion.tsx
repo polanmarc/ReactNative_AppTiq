@@ -5,11 +5,20 @@ import { Animated, StyleSheet, View } from 'react-native';
 import { colors, globalStyles } from '../../config/themes/appThemes';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+/**
+ * Componente funcional para representar una acción.
+ * @param {AccionProps} accion Las propiedades de la acción.
+ * @returns {JSX.Element} El componente de la acción.
+ */
 const Accion = ({ accion }: AccionProps) => {
+    // Estado para controlar la visibilidad del contenido completo.
     const [showFullContent, setShowFullContent] = useState(false);
+    // Estado para la animación de rotación del icono.
     const rotation = useState(new Animated.Value(0))[0];
+    // Estado para la animación de altura del contenido.
     const height = useState(new Animated.Value(0))[0];
 
+    // Función para animar la rotación y la altura del contenido.
     const animate = () => {
         Animated.timing(rotation, {
             toValue: showFullContent ? 0 : 1,
@@ -24,7 +33,7 @@ const Accion = ({ accion }: AccionProps) => {
         }).start();
     };
 
-
+    // Función para alternar la visibilidad del contenido.
     const toggleContent = () => {
         setShowFullContent(!showFullContent);
         animate();
@@ -72,6 +81,7 @@ const Accion = ({ accion }: AccionProps) => {
     );
 }
 
+// Estilos para el componente Accion.
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#f9f9f9',

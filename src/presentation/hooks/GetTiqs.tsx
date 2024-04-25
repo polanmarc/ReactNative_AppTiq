@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
+/**
+ * Propiedades para obtener tiquets según un ID.
+ */
 interface PropGetTiqs {
-    tiqId : number
+    tiqId: number; // El ID para obtener los tiquets.
 }
 
-export const GetTiqsForId = ({ tiqId } : PropGetTiqs) => {
+/**
+ * Hook personalizado para obtener tiquets según un ID.
+ * @param {PropGetTiqs} tiqId El ID para obtener los tiquets.
+ * @returns {any} Los datos de los tiquets.
+ */
+export const GetTiqsForId = ({ tiqId }: PropGetTiqs) => {
     const [ticketData, setTicketData] = useState<any>(null);
 
     useEffect(() => {

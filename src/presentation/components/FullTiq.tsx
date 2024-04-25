@@ -6,43 +6,42 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { getPriority } from "../hooks/Functions";
 import Accion from "./Accion";
 
+
+/**
+ * Props para el componente FullTiq.
+ */
 interface Props {
     tiqSelected: {
+        // Propiedades de la tiq seleccionada.
         id: number;
-        creador: number;
-        asignado: number;
-        inv_asignado: any;
         prioridad: number;
         tipotiq: number;
-        clasificacion: string;
         descripcion: string;
         observaciones: any;
+        created_at: string;
         fecha_final: string;
         estado: number;
-        planificado: any;
-        planificado2: any;
-        created_at: string;
-        updated_at: string;
-        acciones: [
-            {
-                id: number,
-                idtiq: number,
-                creador: number,
-                asignado: number,
-                descripcion: string,
-                observaciones: string,
-                tiempo: string,
-                created_at: string,
-                updated_at: string,
-                interna: number,
-                cliente: number,
-                facturable: number,
-                documentos: any[],
-            }
-        ];
+        acciones: {
+            // Propiedades de cada acción asociada a la tiq.
+            id: number;
+            descripcion: string;
+            observaciones: string;
+            tiempo: string;
+            created_at: string;
+            updated_at: string;
+            interna: number;
+            cliente: number;
+            facturable: number;
+            documentos: any[];
+        }[];
     };
 }
 
+/**
+ * Componente funcional para mostrar una vista completa de un tiquet.
+ * @param {Props} tiqSelected El tiquet seleccionado para mostrar.
+ * @returns {JSX.Element} El componente FullTiq.
+ */
 export const FullTiq = ({ tiqSelected }: Props) => {
     const [showFullContent, setShowFullContent] = useState(false);
     const rotation = useState(new Animated.Value(0))[0];
@@ -61,7 +60,6 @@ export const FullTiq = ({ tiqSelected }: Props) => {
             useNativeDriver: false,
         }).start();
     };
-
 
     const toggleContent = () => {
         setShowFullContent(!showFullContent);
@@ -114,12 +112,12 @@ export const FullTiq = ({ tiqSelected }: Props) => {
             </Card>
             {tiqSelected.acciones && tiqSelected.acciones.length > 0 && tiqSelected.acciones.map((element) => (
                 <Accion accion={element} key={element.id} />
-            ))
-            }
+            ))}
         </View>
     );
 }
 
+// Estilos para el componente FullTiq.
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#f9f9f9',

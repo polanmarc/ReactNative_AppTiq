@@ -1,3 +1,7 @@
+/**
+ * Interfaz para las propiedades de la acción.
+ * @interface AccionProps
+ */
 export interface AccionProps {
     accion: {
         id: number;

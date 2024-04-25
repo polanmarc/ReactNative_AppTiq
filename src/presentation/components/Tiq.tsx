@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Text, View, StyleSheet, Dimensions } from "react-native";
-import { colors, globalStyles, windowHeight, windowWidth } from "../../config/themes/appThemes";
+import { Text, View, StyleSheet } from "react-native";
+import { colors, windowWidth } from "../../config/themes/appThemes";
 import { PrimaryButton } from "../shared/PrimaryButton";
 import { getColorPriority } from "../hooks/Functions";
 import { PropsTiq } from "../../props/TiqProps"
 
-/* interface Props {
-    tiqSelected: {
-        id: number;
-        creador: number;
-        asignado: number;
-        descripcion: string;
-        observaciones: string;
-        prioridad: number;
-    };
-} */
 
-export const Tiq = ({ tiq }: PropsTiq ) => {
+/**
+ * Componente funcional para representar un elemento de lista de tiquets.
+ * @param {PropsTiq} tiq Las propiedades del tiquet.
+ * @returns {JSX.Element} El componente Tiq.
+ */
+export const Tiq = ({ tiq }: PropsTiq) => {
     const navigation = useNavigation();
     const [colorTitle, setColorTitle] = useState('');
 
@@ -27,28 +22,31 @@ export const Tiq = ({ tiq }: PropsTiq ) => {
         }
     }, [tiq]);
 
+    // Función para manejar el evento de presionar el tiquet.
     const handleTiqPress = () => {
         navigation.navigate("Tiq", { tiq: tiq });
     };
 
     return (
         <View>
+            {/* Encabezado del tiquet */}
             <View style={styles.containerHeaderTiq}>
                 <View style={[styles.containerPriority, colorTitle && { backgroundColor: colorTitle }]}></View>
                 <Text style={styles.labelTitle}>{tiq.descripcion}</Text>
             </View>
-            <Text style={styles.label}>{ tiq.observaciones.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, '\n\n') }</Text>
+            {/* Observaciones del tiquet */}
+            <Text style={styles.label}>{tiq.observaciones.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, '\n\n')}</Text>
+            {/* Botón para abrir el tiquet */}
             <View style={styles.containerOpenTiq}>
                 <PrimaryButton
                     onPress={handleTiqPress}
                     label="Abrir Tiq" />
             </View>
-            {}
         </View>
     );
 }
 
-
+// Estilos para el componente Tiq.
 const styles = StyleSheet.create({
     containerHeaderTiq: {
         justifyContent: 'center',
@@ -75,28 +73,9 @@ const styles = StyleSheet.create({
     containerPriority: {
         width: 10,
         height: 10,
-        borderRadius: 10,
+        borderRadius: 5,
         marginLeft: 30,
-        marginHorizontal: 10, 
+        marginHorizontal: 10,
         marginVertical: 7
     }
 });
-
-/*
-
-// === Warning Color linea 44: color: colorTitle ===
-
-<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-    <View style={{ flex: 1, height: 1, backgroundColor: colors.colorTheme, marginVertical: 20 }} />
-    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 2 }}>
-        <Text style={[styles.labelTitle, { color: colorTitle }]}>{tiqSelected.descripcion}</Text>
-    </View>
-    <View style={{ flex: 1, height: 1, backgroundColor: colors.colorTheme }} />
-</View>
-
-<View style={styles.headerContainer}>
-    <Text style={[styles.label, styles.itemContianer]}>ID: {tiqSelected.id}</Text>
-    <Text style={[styles.label, styles.itemContianer]}>Creador: {tiqSelected.creador}</Text>
-</View>
-
-*/

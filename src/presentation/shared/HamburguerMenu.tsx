@@ -4,6 +4,10 @@ import { Button, Menu, Divider, Provider as PaperProvider } from 'react-native-p
 import Icon from 'react-native-vector-icons/Ionicons';
 import { changeColorSchema, colors } from '../../config/themes/appThemes';
 
+/**
+ * Componente para el menú hamburguesa.
+ * @returns {JSX.Element} El componente del menú hamburguesa.
+ */
 const HamburguerMenu = () => {
     const [visible, setVisible] = useState(false);
     const [colorScheme, setColorScheme] = useState('light'); // Estado para almacenar el esquema de color actual

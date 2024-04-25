@@ -6,17 +6,27 @@ import HamburguerMenu from "../shared/HamburguerMenu";
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+/**
+ * Props para el componente Header.
+ */
 interface Props {
-    title: string
+    title: string; // El título que se mostrará en el encabezado.
 }
 
+/**
+ * Componente funcional para representar el encabezado de la aplicación.
+ * @param {Props} title El título que se mostrará en el encabezado.
+ * @returns {JSX.Element} El componente Header.
+ */
 export const Header = ({ title }: Props) => {
     const navigation = useNavigation();
 
+    // Función para retroceder a la pantalla anterior.
     const goBack = () => {
         navigation.goBack();
     };
 
+    // Componente funcional para renderizar el logo del encabezado.
     const HeaderLogo = () => {
         return (
             <View style={styles.container}>
@@ -31,13 +41,17 @@ export const Header = ({ title }: Props) => {
 
     return (
         <View style={styles.headerContainer}>
+            {/* Icono para retroceder a la pantalla anterior */}
             <Icon style={styles.goBack} size={30} color={colors.dark} onPress={goBack} name="arrow-back-outline" />
+            {/* Logo del encabezado */}
             <HeaderLogo />
+            {/* Menú hamburguesa */}
             <HamburguerMenu />
         </View>
     )
 }
 
+// Estilos para el componente Header.
 const styles = StyleSheet.create({
     icon: {
         width: 30,

@@ -1,3 +1,7 @@
+/**
+ * Interfaz para las propiedades de un tiquet.
+ * @interface PropsTiq
+ */
 export interface PropsTiq {
     tiq: {
         id: number;
