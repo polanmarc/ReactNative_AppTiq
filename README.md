@@ -11,13 +11,13 @@ La aplicación de gestión de tiquets de Sintelec Informática es una herramient
 ## Instalación
 ### Requisitos Previos
 - Node.js (>= 14.0.0).
-- npm (>= 6.0.0) o yarn (>= 1.22.0).
+- npm (>= 6.0.0).
 - React Native CLI.
 - Android Studio o Xcode (dependiendo de la plataforma de desarrollo).
 
 ### Clonar el repositorio
 ```
-git clone https://github.com/tu_usuario/sintelec-informatica-ticket-management.git
+git clone https://github.com/polanmarc/ReactNative_AppTiq.git
 cd sintelec-informatica-ticket-management
 ```
 
@@ -26,3 +26,10 @@ Inicie sesión con sus credenciales de técnico.
 1. Revise la lista de tiquets asignados.
 2. Seleccione un tiquet para ver los detalles.
 3. Actualice el estado del tiquet conforme avanz
+
+## Contacto
+Para cualquier duda o sugerencia, por favor contacta a polanmarc19@gmail.com.
+
+---
+
+¡Gracias por utilizar mi programa para gestion de tiquets!
